@@ -35,7 +35,7 @@ public class View {
 				con.join(id, pw);
 
 			} else if (menu == 2) { // 로그인
-
+				System.out.println();
 				System.out.println("᠃ ⚘᠂ ⚘ ˚ ⚘ ᠂ ⚘ ᠃로그인᠃ ⚘᠂ ⚘ ˚ ⚘ ᠂ ⚘ ᠃");
 				System.out.print("ID를 입력해주세요 >> ");
 				String id = sc.next();
