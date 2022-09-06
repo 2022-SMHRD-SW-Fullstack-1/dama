@@ -309,25 +309,6 @@ public class L_CON {
 		System.out.print("선택 >> ");
 	}
 
-	public void titlePrint() {
-		System.out.println("			.　  짹");
-		System.out.println("			　　짹");
-		System.out.println("			　　 짹");
-		System.out.println("			　　짹");
-		System.out.println("			　  짹");
-		System.out.println("			　짹");
-		System.out.println("			　짹");
-		System.out.println("			　 짹");
-		System.out.println("			　　짹");
-		System.out.println("");
-		System.out.println("			 ╰╮　▂╱▔╲╭━━┓");
-		System.out.println("			 　╰╮╲　▊▕╱╭┳╯");
-		System.out.println("			 　　╰╱　　╱╭┳╯");
-		System.out.println("			 　　　▔╲　╭━╯▔");
-		System.out.println("			　　　　 　╲▂▂╱╲");
-		System.out.println("			 　　　　　　┛┛");
-	}
-
 	public boolean dead(Dama_DTO dama) {
 		boolean dead = false;
 		if (dama.getFeed() <= 0 || dama.getClean() <= 0 || dama.getJoy() <= 0 || dama.getHp() <= 0) {
