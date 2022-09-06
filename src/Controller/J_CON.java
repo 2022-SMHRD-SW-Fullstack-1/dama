@@ -12,9 +12,12 @@ import Model.User_DTO;
 
 public class J_CON {
 
+	
 	Connection conn = null;
 	PreparedStatement psmt = null;
 	ResultSet rs = null;
+	
+	Music_con musicCon = new Music_con();
 
 	int cnt = 0; // executeUpdate의 결과값을 담아주는 변수
 
@@ -102,30 +105,6 @@ public class J_CON {
 		return loginresult;
 	}
 
-	// 생존해있는 캐릭터 유무 체크 - 삭제 예정 메소드
-	public String logincheck(String id, String pw) {
-		getCon();
-		String result = null; // 결과값 리턴을 위한 변수
-		try {
-			String sql = "select nick from dama where (clean > 0 and feed > 0 and likeness > 0) and id = (select user_id from user_info where user_id = ? and user_pw = ?)";
-			psmt = conn.prepareStatement(sql);
-			psmt.setString(1, id);
-			psmt.setString(2, pw);
-
-			rs = psmt.executeQuery();
-
-			if (rs.next()) {
-				result = rs.getString(1);
-			}
-
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			close();
-		}
-
-		return result;
-	}
 
 	// 생존해있는 캐릭터 불러오기
 	public Dama_DTO damalogin(String user_id) {
@@ -135,9 +114,9 @@ public class J_CON {
 			String sql = "select nick, type, exp, lev, id, dama_date, feed, clean, hp, joy from dama where feed>0 and clean>0 and hp>0 and joy>0 and id=?";
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, user_id);
-			
+
 			rs = psmt.executeQuery();
-			
+
 			while (rs.next()) {
 				String nick = rs.getString(1);
 				String type = rs.getString(2);
@@ -173,10 +152,10 @@ public class J_CON {
 			psmt.setInt(3, 0);
 			psmt.setInt(4, 1);
 			psmt.setString(5, user_id);
-			psmt.setInt(6, 50);
-			psmt.setInt(7, 50);
-			psmt.setInt(8, 50);
-			psmt.setInt(9, 50);
+			psmt.setInt(6, 75);
+			psmt.setInt(7, 75);
+			psmt.setInt(8, 75);
+			psmt.setInt(9, 75);
 			cnt = psmt.executeUpdate();
 
 			if (cnt > 0) {
@@ -224,12 +203,23 @@ public class J_CON {
 		try {
 			dama.setExp(0);
 			dama.setLev(1 + dama.getLev());
+			musicCon.play(2);
+			System.out.println(dama.getNick()+"의 레벨이 1 올랐다!");
 			if (dama.getLev() == 3) {
+				System.out.println("오잉?!!");
+				System.out.println("알의 상태가......?");
+				System.out.println("");
+				System.out.println("");
+				System.out.println("");
 				System.out.println("알이 부화했습니다!!");
+				musicCon.play(1);
 				dama.setType("아기새");
+				System.out.println(dama.getNick() + "은/는 아기새가 되었다!");
 			}
 			if (dama.getLev() == 10) {
+				System.out.println("어라?!");
 				System.out.println("아기새가 성장했습니다!!");
+				musicCon.play(1);
 				int growth = (int) Math.random() * 3;
 				if (growth == 0) {
 					dama.setType("비둘기");
@@ -238,7 +228,14 @@ public class J_CON {
 				} else {
 					dama.setType("닭");
 				}
+				System.out.println(dama.getNick() + "은/는 " + dama.getType() + "이/가 되었다!");
+				System.out.println("이제 제법 어른새 같다!");
 			}
+			
+			if (dama.getLev() == 20) {
+				event(dama);
+			}
+			
 			String sql = "update dama set exp =?, lev =?, type=? where id=? and nick=?";
 			psmt = conn.prepareStatement(sql);
 			psmt.setInt(1, dama.getExp());
@@ -255,8 +252,7 @@ public class J_CON {
 			close();
 		}
 	}
-	
-	//랭킹 보기 
+
 	public ArrayList<Dama_DTO> rank() {
 		// 전체 회원의 정보를 담을 수 있는 ArrayList 만들기
 		ArrayList<Dama_DTO> totalList = new ArrayList<>();
@@ -272,8 +268,8 @@ public class J_CON {
 				int rank = rs.getInt(1);
 				String nick = rs.getString(2);
 				int lev = rs.getInt(3);
-				String id = rs.getString(4); 
-				String date = rs.getString(5); 
+				String id = rs.getString(4);
+				String date = rs.getString(5);
 
 				Dama_DTO rankin = new Dama_DTO(rank, nick, lev, id, date);
 				totalList.add(rankin);
@@ -288,17 +284,95 @@ public class J_CON {
 		}
 		return totalList;
 	}
-	
-	
-	public void rankshow(ArrayList<Dama_DTO> rankList){
-	System.out.println("====랭킹====");
-	// ArrayList 출력!
-	System.out.println("등수 / 별명 / 레벨 / 아이디/ 최근 접속날짜");
-	for (int i = 0; i < rankList.size(); i++) {
-		System.out.println(rankList.get(i).getRank() + " / " + rankList.get(i).getNick() + " / "
-				+ rankList.get(i).getLev() + " / " + rankList.get(i).getId() + " / "
-				+ rankList.get(i).getDate());
+
+	// 랭킹 보기
+	public void rankshow(ArrayList<Dama_DTO> rankList) {
+		System.out.println();
+		System.out.println("♔∴∵∴♔∴∵∴♔∴∵∴♔∴∵∴♔∴∵∴♔랭킹♔∴∵∴♔∴∵∴♔∴∵∴♔∴∵∴♔∴∵∴♔");
+		// ArrayList 출력!
+		System.out.println("등수 \t| 별명 \t| 레벨 \t| 아이디 \t| 최근 접속 날짜");
+		for (int i = 0; i < rankList.size(); i++) {
+			System.out.println(rankList.get(i).getRank() + "위\t " + rankList.get(i).getNick() + "\t "
+					+ rankList.get(i).getLev() + "\t " + rankList.get(i).getId() + "\t " + rankList.get(i).getDate());
+		}
+		System.out.println();
 	}
+
+	public void dateUpdate(Dama_DTO dama) {
+		getCon();
+		try {
+			String sql = "update dama set dama_date = sysdate where id=? and nick=?";
+			psmt = conn.prepareStatement(sql);
+
+			psmt.setString(1, dama.getId());
+			psmt.setString(2, dama.getNick());
+
+			psmt.executeUpdate();
+
+			String sql2 = "select dama_date from dama where id=? and nick=?";
+
+			psmt = conn.prepareStatement(sql2);
+
+			psmt.setString(1, dama.getId());
+			psmt.setString(2, dama.getNick());
+
+			rs = psmt.executeQuery();
+
+			while (rs.next()) {
+				String sysdate = rs.getString(1);
+
+				dama.setDate(sysdate);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
 	}
 	
+	public void event(Dama_DTO dama) {
+		System.out.println();
+		System.out.println("어느덧 무럭무럭 자란 " + dama.getNick() + "...");
+		System.out.println(dama.getNick() + "는 어느새 내 인생에서 빠질 수 없는 존재가 되었다");
+		System.out.println();
+		System.out.println("그러던 어느 날  . . . . . . . ");
+		System.out.println();
+		System.out.println();
+		System.out.println("~...요...~");
+		System.out.println();
+		System.out.println("~...저...요...~");
+		System.out.println();
+		System.out.println("어...? 무슨 소리지?");
+		System.out.println();
+		System.out.println(".                              |\r\n"
+				+ "  　╲　　　　　　　　　　　╱\r\n"
+				+ "  　　　　　　　　　　/\r\n"
+				+ "  　　　╲　　　　　　　　╱\r\n"
+				+ "  　　╲　　    　　　　　╱\r\n"
+				+ "  -　-　　　~저기요~　　-　-\r\n"
+				+ "  　　╱　   　　　　　　╲\r\n"
+				+ "  　╱　　/                                 .\r\n"
+				+ "  　　╱　　　　　　　　╲\r\n"
+				+ "  　　　　　/　|　　　\r\n"
+				+ "  　　　　　　　.\r\n"
+				+ "");
+		System.out.println();
+		System.out.println("~제 목소리가 들리시나요 . . . . . . ?~");
+		System.out.println("~저어는.....뻐꾸기의 신.....~");
+		System.out.println("~우리 뻐꾸기는 다른 새의 둥지에 알을 낳곤 하죠...~");
+		System.out.println("~자기 알도 아닐 뿐더러 종족도 다른 출처불명의 알...~");
+		System.out.println("~낯선 알을 성심성의껏 기른 당신에게 큰 감명을 받았습니다....~");
+		System.out.println("~감사의 선물로 이것을 드리겠습니다...~");
+		System.out.println("");
+		System.out.println("...");
+		System.out.println("................");
+		System.out.println("네? 갑자기요?");
+		System.out.println("수상한 목소리가 남기고 간 것은 로또 2등 당첨권이었다");
+		System.out.println("잘 모르겠지만 "+dama.getNick()+"은/는 내게 복덩이야!");
+		System.out.println("앞으로도 함께 잘 살자~!");
+		System.out.println();
+	}
+
+
 }
