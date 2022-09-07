@@ -19,7 +19,8 @@ public class View {
 
 		musicCon.play(3);
 		asciiCon.printASCII_Title();
-
+		
+		
 		while (true) {
 			logicCon.menuPrint();
 			int menu = sc.nextInt();
@@ -27,7 +28,8 @@ public class View {
 			musicCon.play(0);
 			System.out.println();
 			if (menu == 1) { // 회원가입
-				System.out.println("᠃ ⚘᠂ ⚘ ˚ ⚘ ᠂ ⚘ ᠃회원가입᠃ ⚘᠂ ⚘ ˚ ⚘ ᠂ ⚘ ᠃");
+				System.out.println("==========================회원가입===========================");
+				//System.out.println("===============회원가입===============");
 				System.out.print("ID를 입력해주세요 >> ");
 				String id = sc.next();
 				System.out.print("PW를 입력해주세요 >> ");
@@ -36,7 +38,7 @@ public class View {
 				con.join(id, pw);
 
 			} else if (menu == 2) { // 로그인
-				System.out.println("᠃ ⚘᠂ ⚘ ˚ ⚘ ᠂ ⚘ ᠃로그인᠃ ⚘᠂ ⚘ ˚ ⚘ ᠂ ⚘ ᠃");
+				System.out.println("===========================로그인==========================");				
 				System.out.print("ID를 입력해주세요 >> ");
 				String id = sc.next();
 				System.out.print("PW를 입력해주세요 >> ");
@@ -51,7 +53,7 @@ public class View {
 					while (true) {
 						// 생존해있는 캐릭터 유무 체크
 						Dama_DTO dama = con.damalogin(user.getId());
-						System.out.println("。.。:+* ゜ ゜゜ *+:。.。:+* ゜ ゜゜ *+:。.。.。:+* ゜ ゜゜");
+						System.out.println("===========================================================");
 						System.out.println("[1]새 캐릭터 생성 [2]캐릭터 키우기 [3]캐릭터 현재 상태 보기 [4]뒤로 가기 >> ");
 						int menu2 = sc.nextInt();
 						musicCon.play(0);
@@ -75,7 +77,7 @@ public class View {
 								asciiCon.defaulPrint(dama);
 								String needs = logicCon.needs(dama);
 								System.out.println(dama.getNick() + "은/는 " + needs + "를 원하는 눈치이다");
-								System.out.println("。.。:+* ゜ ゜゜ *+:。.。:+* ゜ ゜゜ *+:。.。.。:+* ゜ ゜゜");
+								System.out.println("===========================================================");
 								System.out.println("[1]잠자기 [2]밥먹기 [3]씻기 [4]놀기 [5]지켜보기 >> ");
 								int menu3 = sc.nextInt(); // 세부메뉴 선택
 								musicCon.play(0);
@@ -92,7 +94,7 @@ public class View {
 								} else {
 									System.out.println("다시 선택해주세요");
 								}
-								
+
 								if (logicCon.dead(dama) == true) {
 									break;
 								}
@@ -108,24 +110,24 @@ public class View {
 								logicCon.show(dama);
 							}
 						} else if (menu2 == 4) { // 뒤로 가기
-							System.out.println("메인화면으로 돌아갑니다");
+							System.out.println("메인화면으로 돌아갑니다\n");
 							break;
 						} else {
-							System.out.println("다시 선택해주세요");
+							System.out.println("다시 선택해주세요\n");
 						}
 					} // 로그인 세부메뉴 끝
 				} else {
-					System.out.println("아이디와 비밀번호를 다시 확인해주세요");
+					System.out.println("아이디와 비밀번호를 다시 확인해주세요\n");
 				} // 로그인 실패시
 			} else if (menu == 3) { // 랭킹 보기
 				ArrayList<Dama_DTO> rankList = new ArrayList<Dama_DTO>(con.rank());
 				con.rankshow(rankList);
 
 			} else if (menu == 4) {
-				System.out.println("게임을 종료합니다");
+				System.out.println("게임을 종료합니다\n");
 				break;
 			} else {
-				System.out.println("다시 선택해주세요");
+				System.out.println("다시 선택해주세요\n");
 			}
 		}
 		sc.close();

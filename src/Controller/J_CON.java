@@ -288,7 +288,7 @@ public class J_CON {
 	// 랭킹 보기
 	public void rankshow(ArrayList<Dama_DTO> rankList) {
 		System.out.println();
-		System.out.println("♔∴∵∴♔∴∵∴♔∴∵∴♔∴∵∴♔∴∵∴♔랭킹♔∴∵∴♔∴∵∴♔∴∵∴♔∴∵∴♔∴∵∴♔");
+		System.out.println("============================랭킹==========================");				
 		// ArrayList 출력!
 		System.out.println("등수 \t| 별명 \t| 레벨 \t| 아이디 \t| 최근 접속 날짜");
 		for (int i = 0; i < rankList.size(); i++) {
@@ -356,14 +356,14 @@ public class J_CON {
 		}
 		
 		System.out.println(".                              |\r\n"
-				+ "  　╲　　　　　　　　　　　╱\r\n"
+				+ "  　\\　　　　　　　　　　　/\r\n"
 				+ "  　　　　　　　　　　/\r\n"
-				+ "  　　　╲　　　　　　　　╱\r\n"
-				+ "  　　╲　　    　　　　　╱\r\n"
+				+ "  　　　\\　　　　　　　　/\r\n"
+				+ "  　　\\　　    　　　　　/\r\n"
 				+ "  -　-　　　~저기요~　　-　-\r\n"
-				+ "  　　╱　   　　　　　　╲\r\n"
-				+ "  　╱　　/                                 .\r\n"
-				+ "  　　╱　　　　　　　　╲\r\n"
+				+ "  　　/　   　　　　　　\\\r\n"
+				+ "  　/　　/                                 .\r\n"
+				+ "  　　/　　　　　　　　\\\r\n"
 				+ "  　　　　　/　|　　　\r\n"
 				+ "  　　　　　　　.\r\n"
 				+ "");

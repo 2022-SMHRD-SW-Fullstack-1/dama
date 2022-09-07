@@ -146,10 +146,6 @@ public class L_CON {
 
 	public void waiting(Dama_DTO dama) {// 지켜보기
 		System.out.println(dama.getNick()+"을/를 지켜본다...");
-		System.out.println("▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄\r\n"
-				+ "█░░░░░░░░▀█▄▀▄▀██████░▀█▄▀▄▀██████░\r\n"
-				+ "░░░░░░░░░░░▀█▄█▄███▀░░░ ▀██▄█▄███▀░\r\n"
-				);
 		try {
 			ascii_con.printASCII_A(dama);
 			System.out.println();
@@ -266,10 +262,12 @@ public class L_CON {
 	}
 
 	public void prologue() {
-		System.out.println(
-				"┊　　┊　　┊ 　 ┊    　┊　   ┊　 ┊\r\n" + "┊　　┊　　┊ 　 ☆    　┊　   ┊　 ┊\r\n" + "┊　　┊　　 ✬ 　 　   　✬ 　  ┊　 ┊\r\n"
-						+ "┊　　★ 　　　 　 　    　　　   ★　 ┊\r\n" + "☆ 　　 　　　 　 　    　　　　　　 ☆\r\n" + "");
-		System.out.println("평소처럼 지친 몸을 끌고 집에 가던 당신... ");
+		System.out.println("│　　　　│ 　 │    　│　   │　 │\r\n"
+				+ "│　　│　　│ 　 ☆    　│　   │　 │\r\n"
+				+ "│　　│　　 ★ 　 　   　☆ 　  │　 │\r\n"
+				+ "│　　★ 　　　 　 　    　　　   ★　 │\r\n"
+				+ "☆ 　　 　　　 　 　    　　　　　　 ☆\r\n");
+		System.out.println("\n평소처럼 지친 몸을 끌고 집에 가던 당신... ");
 		System.out.println();
 		System.out.println("오잉?!");
 		System.out.println("하늘에서 갑자기 무언가가 떨어지는데...");
@@ -291,21 +289,24 @@ public class L_CON {
 			e.printStackTrace();
 		}
 		
-		System.out.println("반사적으로 받아보니 어라? .... 이건?");
+		System.out.println("\n반사적으로 받아보니 어라? .... 이건?");
 		System.out.println("알.......?");
 		System.out.println("하늘에서 알이 떨어지다니.... ");
 		System.out.println("혹시 알을 잘 키우면 보답을 받을지도?");
 		System.out.println("................");
 		System.out.println("당신은 이 알을 키우기로 마음 먹었다!");
-		System.out.println("이 알을 잘 키워보자!");
+		System.out.println("이 알을 잘 키워보자!\n");
 
 	}
 
 	public void menuPrint() {
 		System.out.println(" ￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣\r\n"
-				+ "|　메뉴     　　　　　　　　　　　　　　　　　　　　　　[－][口][×] |\r\n" + "|￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣ |\r\n"
-				+ "|　 ＿＿＿＿＿＿　　  ＿＿＿＿＿＿　　 ＿＿＿＿＿＿　　 ＿＿＿＿＿＿　  |\r\n" + "| ｜1.회원가입 |　 ｜2.로그인 |  | 3.랭킹  |　 ｜ 4.종료  |  |\r\n"
-				+ "|　 ￣￣￣￣￣￣　　  ￣￣￣￣￣￣　　 ￣￣￣￣￣￣　   ￣￣￣￣￣￣   |\r\n" + "￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣");
+						+ "|　메뉴　　　　　　　　　　　　　　　　　　　　　　　　　　　[－][口][×]　|\r\n" + 
+						  "|￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣|\r\n"
+						+ "|　 ＿＿＿＿＿＿　　 　＿＿＿＿＿＿　　 ＿＿＿＿＿＿　　 ＿＿＿＿＿＿　  　|\r\n" 
+						+ "|　ㅣ1.회원가입ㅣ　　ㅣ2.로그인 　ㅣ　ㅣ 3.랭킹  　ㅣ　ㅣ 4.종료　  ㅣ　　 |\r\n"
+						+ "|　 ￣￣￣￣￣￣　　  ￣￣￣￣￣￣　　 ￣￣￣￣￣￣　   ￣￣￣￣￣￣     　|\r\n" 
+						+ " ￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣");
 		System.out.print("선택 >> ");
 	}
 
