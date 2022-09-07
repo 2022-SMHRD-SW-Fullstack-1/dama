@@ -14,7 +14,6 @@ public class Dama_DTO {
 	private int joy;
 	
 	private int rank; //랭킹 보기용 변수
-	private int evtcnt = 0; //이벤트횟수 카운트 변수
 	
 	public Dama_DTO(String nick, String type, int exp, int lev, String id, String date, int feed, int clean, int hp,
 			int joy) {
@@ -122,11 +121,4 @@ public class Dama_DTO {
 		return rank;
 	}
 
-	public int getEvncnt() {
-		return evtcnt;
-	}
-
-	public void setEvncnt(int evtcnt) {
-		this.evtcnt = evtcnt;
-	}
 }

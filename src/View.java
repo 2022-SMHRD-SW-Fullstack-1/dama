@@ -128,5 +128,6 @@ public class View {
 				System.out.println("다시 선택해주세요");
 			}
 		}
+		sc.close();
 	}
 }

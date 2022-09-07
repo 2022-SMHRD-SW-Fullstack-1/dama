@@ -220,7 +220,7 @@ public class J_CON {
 				System.out.println("어라?!");
 				System.out.println("아기새가 성장했습니다!!");
 				musicCon.play(1);
-				int growth = (int) Math.random() * 3;
+				int growth = (int) (Math.random() * 3);
 				if (growth == 0) {
 					dama.setType("비둘기");
 				} else if (growth == 1) {
@@ -344,7 +344,17 @@ public class J_CON {
 		System.out.println("~...저...요...~");
 		System.out.println();
 		System.out.println("어...? 무슨 소리지?");
-		System.out.println();
+
+		try {
+			System.out.println();
+			Thread.sleep(500);
+			System.out.println();
+			Thread.sleep(500);
+			Thread.sleep(500);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		
 		System.out.println(".                              |\r\n"
 				+ "  　╲　　　　　　　　　　　╱\r\n"
 				+ "  　　　　　　　　　　/\r\n"
@@ -357,12 +367,23 @@ public class J_CON {
 				+ "  　　　　　/　|　　　\r\n"
 				+ "  　　　　　　　.\r\n"
 				+ "");
+	
+		try {
+			Thread.sleep(500);
+			System.out.println();
+			Thread.sleep(500);
+			System.out.println();
+			Thread.sleep(500);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 		System.out.println();
 		System.out.println("~제 목소리가 들리시나요 . . . . . . ?~");
 		System.out.println("~저어는.....뻐꾸기의 신.....~");
 		System.out.println("~우리 뻐꾸기는 다른 새의 둥지에 알을 낳곤 하죠...~");
 		System.out.println("~자기 알도 아닐 뿐더러 종족도 다른 출처불명의 알...~");
 		System.out.println("~낯선 알을 성심성의껏 기른 당신에게 큰 감명을 받았습니다....~");
+		System.out.println("당신같은 사람이 많아진다면 뻐꾸기들도 더 안심하고 알을 낳을 수 있겠죠");
 		System.out.println("~감사의 선물로 이것을 드리겠습니다...~");
 		System.out.println("");
 		System.out.println("...");
