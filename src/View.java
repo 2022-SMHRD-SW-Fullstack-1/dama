@@ -25,6 +25,7 @@ public class View {
 			int menu = sc.nextInt();
 			musicCon.stop();
 			musicCon.play(0);
+			System.out.println();
 			if (menu == 1) { // 회원가입
 				System.out.println("᠃ ⚘᠂ ⚘ ˚ ⚘ ᠂ ⚘ ᠃회원가입᠃ ⚘᠂ ⚘ ˚ ⚘ ᠂ ⚘ ᠃");
 				System.out.print("ID를 입력해주세요 >> ");
@@ -35,7 +36,6 @@ public class View {
 				con.join(id, pw);
 
 			} else if (menu == 2) { // 로그인
-				System.out.println();
 				System.out.println("᠃ ⚘᠂ ⚘ ˚ ⚘ ᠂ ⚘ ᠃로그인᠃ ⚘᠂ ⚘ ˚ ⚘ ᠂ ⚘ ᠃");
 				System.out.print("ID를 입력해주세요 >> ");
 				String id = sc.next();
@@ -47,7 +47,7 @@ public class View {
 				String loginresult = con.userlogin(user);
 
 				if (loginresult != null) { // 로그인 성공
-					System.out.println("환영합니다 " + user.getId() + "님");
+					System.out.println("\n환영합니다 " + user.getId() + "님\n");
 					while (true) {
 						// 생존해있는 캐릭터 유무 체크
 						Dama_DTO dama = con.damalogin(user.getId());
