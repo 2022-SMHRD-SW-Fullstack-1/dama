@@ -20,7 +20,7 @@
 * 데이터베이스 : oracle 11g
 
 ## 기능 흐름도
-![캡처00](https://user-images.githubusercontent.com/112371684/189009679-e41f8314-266b-494a-b45c-91816c0a9f8a.PNG)
+![캡처02](https://user-images.githubusercontent.com/112371684/189013016-b5ecda01-45fe-4129-973d-31104760ef3a.PNG)
 
 
 ## 구현 화면 
