@@ -17,7 +17,7 @@
 
 ## 개발 환경
 * 사용언어 : Java 1.8
-* 개발도구 : eclipse
+* 개발도구 : eclipse, eaver
 * 데이터베이스 : oracle 11g
 
 ## 기능 흐름도
@@ -25,30 +25,8 @@
 
 
 ## 구현 화면 
-* 메인화면 
 
-![메뉴](https://user-images.githubusercontent.com/112380364/189011709-3ec85e76-834f-4ad4-96fa-123232d42e8c.PNG)
-
-* 회원가입
-
-![가입성공](https://user-images.githubusercontent.com/112380364/189011904-462442bb-43d6-4020-a9bd-5afdec251118.PNG)
-
-* 로그인
-
-![로그인](https://user-images.githubusercontent.com/112380364/189011616-44680309-5ed6-4396-9949-4b0f3b745bd3.PNG)
-
-* 프롤로그
-
-![첫 스토리 아스키코드](https://user-images.githubusercontent.com/112380364/189012143-72da6083-7a51-463c-8343-8c45a9590eb9.PNG)
-
-* 캐릭터 생성
-
-![알 생성](https://user-images.githubusercontent.com/112380364/189012237-6798acc3-802d-483d-bfe7-fb87f9c0bc4c.PNG)
-
- * 씻기 메뉴 실행
-
-![캡처01](https://user-images.githubusercontent.com/112371684/189012763-d8a73353-8d74-4b08-9088-bc196c0b39c3.PNG)
-
+https://user-images.githubusercontent.com/112371684/189015704-6824f821-8d51-4650-bbce-e6a4310c08fb.mp4
 
 
 ## 제작 일정
